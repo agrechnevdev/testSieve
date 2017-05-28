@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">TestSieve</string>
+    <string name="input_number">Введите число</string>
+    <string name="simple_numbers">Простые числа</string>
+    <string name="summ">Сумма</string>
+    <string name="calculate">Рассчитать</string>
+
+
+</resources>
