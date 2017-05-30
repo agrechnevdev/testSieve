@@ -56,9 +56,10 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse {
     }
 
     @Override
-    public void processFinish(String output) {
+    public void processFinish(Answer answer) {
         enableView();
-        webView.loadDataWithBaseURL("", output, "text/html", "UTF-8", "");
+        webView.loadDataWithBaseURL("", answer.getNumbers(), "text/html", "UTF-8", "");
+        outputSumm.setText(answer.getSumm());
     }
 
     @OnClick(R.id.calculate_btn)

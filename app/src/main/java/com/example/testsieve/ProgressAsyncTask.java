@@ -3,9 +3,11 @@ package com.example.testsieve;
 
 import android.os.AsyncTask;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 
-public class ProgressAsyncTask extends AsyncTask<String, Void, String> {
+public class ProgressAsyncTask extends AsyncTask<String, Void, Answer> {
 
     public AsyncResponse delegate = null;
 
@@ -14,12 +16,13 @@ public class ProgressAsyncTask extends AsyncTask<String, Void, String> {
     }
 
     @Override
-    protected void onPostExecute(String s) {
-        delegate.processFinish(s);
+    protected void onPostExecute(Answer answer) {
+        delegate.processFinish(answer);
     }
 
+
     @Override
-    protected String doInBackground(String... params) {
+    protected Answer doInBackground(String... params) {
 
         Integer n = Integer.parseInt(params[0]);
         boolean[] mas = new boolean[n + 1];
@@ -34,11 +37,16 @@ public class ProgressAsyncTask extends AsyncTask<String, Void, String> {
 
 
         }
+        Long summ = 0L;
         StringBuilder str = new StringBuilder();
-        for (int i = 0; i < mas.length; i++){
-            if(mas[i])
+        for (int i = 0; i < mas.length; i++) {
+            if (mas[i]) {
                 str.append(i).append(" ");
+                summ += i;
+            }
         }
-        return str.toString();
+
+        Answer answer = new Answer(str.toString() , Long.toString(summ));
+        return answer;
     }
 }

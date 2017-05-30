@@ -2,5 +2,5 @@ package com.example.testsieve;
 
 
 public interface AsyncResponse {
-    void processFinish(String output);
+    void processFinish(Answer output);
 }
